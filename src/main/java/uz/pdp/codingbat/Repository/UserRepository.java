@@ -6,4 +6,7 @@ import uz.pdp.codingbat.Entity.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer> {
+    boolean existsByEmail(String email);
+
+    boolean existsByEmailAndIdNot(String email, Integer id);
 }

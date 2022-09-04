@@ -6,4 +6,8 @@ import uz.pdp.codingbat.Entity.ProgramingLanguage;
 
 @Repository
 public interface ProgramingLanguageRepository extends JpaRepository<ProgramingLanguage, Integer> {
+
+    boolean existsByLangName(String langName);
+
+    boolean existsByLangNameAndIdNot(String langName, Integer id);
 }

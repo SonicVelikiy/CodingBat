@@ -6,4 +6,8 @@ import uz.pdp.codingbat.Entity.ProblemCategory;
 
 @Repository
 public interface ProblemCategoryRepository extends JpaRepository<ProblemCategory, Integer> {
+    boolean existsByCategoryName(String categoryName);
+
+    boolean existsByCategoryNameAndIdNot(String categoryName, Integer id);
+
 }

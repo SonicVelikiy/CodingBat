@@ -13,4 +13,9 @@ public class ProblemDto {
     private String probName;
 
     private Integer problemCategory;
+
+    private boolean statusProblemForUser;
+
+    private Integer users;
+
 }

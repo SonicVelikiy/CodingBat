@@ -27,14 +27,17 @@ public class ProblemCategoryService {
     }
 
     public ApiResponse addProblemCategory(ProblemCategoryDto problemCategoryDto) {
-        boolean existsByCategoryName = problemCategoryRepository.existsByCategoryName(problemCategoryDto.getCategoryName());
-        if (existsByCategoryName) {
-            return new ApiResponse("Bunday nomli kategoriya bazada mavjud", false);
-        }
+
+
         Optional<ProgramingLanguage> programingLanguageRepositoryById = programingLanguageRepository.findById(problemCategoryDto.getProgramingLanguage());
 
         if (!programingLanguageRepositoryById.isPresent()) {
             return new ApiResponse("Bunday dasturlash tili mavjud emas", false);
+        }
+
+        boolean existsByCategoryNameAndProgramingLanguage = problemCategoryRepository.existsByCategoryNameAndProgramingLanguage(problemCategoryDto.getCategoryName(), programingLanguageRepositoryById.get());
+        if (existsByCategoryNameAndProgramingLanguage) {
+            return new ApiResponse("Bunday nomli kategoriya bazada mavjud", false);
         }
         ProblemCategory problemCategory = new ProblemCategory();
         problemCategory.setCategoryLevel(problemCategoryDto.getCategoryLevel());

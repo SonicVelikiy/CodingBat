@@ -16,10 +16,15 @@ public class Problem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String probName;
+
+    private boolean statusProblemForUser;
 
     @ManyToOne
     private ProblemCategory problemCategory;
+
+    @ManyToOne
+    private Users users;
 
 }
